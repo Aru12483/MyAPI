@@ -25,6 +25,30 @@ def get_db():
     finally:
         db.close()
 
+@app.get('/api/v2/companyData')
+async def month(request : Request):
+    return [  {
+    "key": "algorithms",
+    "label": "All Algorithms",
+    "value": 3,
+    "list": [
+      {
+        "key": "vindr_v2",
+        "label": "Vindr Mammo",
+        "data": [1, 2, 3, 4, 5],
+      },
+      {
+        "key": "vindr-spinexr",
+        "label": "Spine XR",
+        "data": [1, 1, 3, 2, 5],
+      },
+      {
+        "key": "vindr-brainct",
+        "label": "VinDr-BrainCT",
+        "data": [2, 4, 1, 4, 5.4],
+      }
+    ]
+  }]
 
 @app.post('/dashboard/api/v2/monthly_count')
 async def post_basic_form(algo: str = Form(...), month: str = Form(None), year: str = Form(...)):
